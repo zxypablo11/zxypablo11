@@ -3,7 +3,7 @@
 
 <p align="center">
   <a href="https://github.com/MartinMazzarani">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&pause=1000&color=3BA55D&center=true&vCenter=true&width=600&lines=Backend+Developer;Minecraft+AntiCheat+Developer;Java+%7C+React+%7C+TypeScript;Always+learning+new+things" alt="Typing SVG" />
+    <img src="[https://readme-typing-svg.herokuapp.com?](https://readme-typing-svg.demolab.com)font=Fira+Code&size=22&pause=1000&color=3BA55D&center=true&vCenter=true&width=600&lines=Backend+Developer;Minecraft+AntiCheat+Developer;Java+%7C+React+%7C+TypeScript;Always+learning+new+things" alt="Typing SVG" />
   </a>
 </p>
 
