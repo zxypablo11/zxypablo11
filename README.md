@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Martin</h1>
 <h3 align="center">A passionate backend Developer from Germany</h3>
 
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=martinmazzarani" alt="martinmazzarani" /></a> </p>
+<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=martinmazzarani" alt="MartinMazzarani" /></a> </p>
 
 - 🔭 I’m currently working on [Minecraft-AntiCheat](https://github.com/MartinMazzarani/Minecraft-Open-source-AC.git)
 
