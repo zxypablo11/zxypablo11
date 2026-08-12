@@ -17,11 +17,11 @@
 
 | | |
 |---|---|
-| 🔭 Working on | **Minecraft Open Source AntiCheat** |
+| 🔭 Working on | **Nothing Right Now** |
 | 🌱 Learning | **Frontend Development & Luau** |
-| 🤝 Looking for help with | **Minecraft systems & frontend architecture** |
+| 🤝 Looking for help with | **frontend architecture** |
 | 💬 Ask me about | **React, Java, Minecraft Development** |
-| 📫 Contact | **contact-Martinn@proton.me** |
+| 📫 Contact | **contact-pabblo@proton.me** |
 | ⚡ Fun fact | I enjoy building scalable backend systems and game infrastructure |
 
 ---
@@ -29,10 +29,10 @@
 ## 🌐 Connect With Me
 
 <p align="left">
-  <a href="https://github.com/MartinMazzarani" target="_blank">
+  <a href="https://github.com/zxypablo11" target="_blank">
     <img src="https://img.shields.io/badge/GitHub-Pablo-0D0D0D?style=for-the-badge&logo=github&logoColor=E10600" />
   </a>
-  <a href="mailto:contact-Martinn@proton.me">
+  <a href="mailto:contact-pabblo@proton.me">
     <img src="https://img.shields.io/badge/ProtonMail-Contact-0D0D0D?style=for-the-badge&logo=protonmail&logoColor=E10600" />
   </a>
 </p>
@@ -78,7 +78,7 @@
   <img height="165" src="https://github-readme-streak-stats.herokuapp.com/?user=MartinMazzarani&theme=github-dark-blue&hide_border=true&background=0D0D0D&stroke=E10600&ring=E10600&fire=E10600&currStreakLabel=E10600" />
 </p>
 
-> 💡 Für alle Stats: [github.com/zxypablo11](https://github.com/zxypablo11)
+> 💡 For All Stats: [github.com/zxypablo11](https://github.com/zxypablo11)
 
 ---
 
