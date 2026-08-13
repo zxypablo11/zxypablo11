@@ -1,8 +1,8 @@
 <h1 align="center">Hi 👋, I'm Pablo</h1>
-<h3 align="center">Backend Developer & Minecraft Systems Developer from Germany 🇩🇪</h3>
+<h3 align="center">Backend Developer & Maleware analyst from Germany 🇩🇪</h3>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&color=E10600&center=true&vCenter=true&width=600&lines=Backend+Developer;Minecraft+AntiCheat+Developer;Java+%7C+React+%7C+TypeScript;Always+learning+new+things" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&color=E10600&center=true&vCenter=true&width=600&lines=Backend+Developer;Maleware+Analystic+Developer;Java+%7C+React+%7C+TypeScript;Always+learning+new+things" alt="Typing SVG" />
 </p>
 
 <p align="center">
@@ -20,7 +20,7 @@
 | 🔭 Working on | **Nothing Right Now** |
 | 🌱 Learning | **Frontend Development & Luau** |
 | 🤝 Looking for help with | **frontend architecture** |
-| 💬 Ask me about | **React, Java, Minecraft Development** |
+| 💬 Ask me about | **React, Java, Secruity Development** |
 | 📫 Contact | **contact-pabblo@proton.me** |
 | ⚡ Fun fact | I enjoy building scalable backend systems and game infrastructure |
 
@@ -84,7 +84,7 @@
 
 ## 🔥 Current Project
 
-### Minecraft Open Source AntiCheat
+### Open source defender
 
 <p align="center">
   <img src="https://img.shields.io/badge/Packet%20Analysis-✔-E10600?style=flat-square&labelColor=0D0D0D" />
