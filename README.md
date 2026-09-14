@@ -1,90 +1,32 @@
-<div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0a0a0f,100:13111a&height=160&section=header" />
-
-</div>
-
-<br />
-
 ```
-  ██████╗ ██╗   ██╗███████╗██╗  ██╗
-  ██╔══██╗██║   ██║██╔════╝██║ ██╔╝
-  ██║  ██║██║   ██║███████╗█████╔╝
-  ██║  ██║██║   ██║╚════██║██╔═██╗
-  ██████╔╝╚██████╔╝███████║██║  ██╗
-  ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝
+$ attach --process pablo.exe
+scanning... found.
 ```
 
-<div align="center">
+## pablo
 
-*cheat creator. game dev. i build things that aren't supposed to exist.*
+owner and cheat creator at [Dusk Cheats](https://fakecrime.bio/CrPablo). i take games apart to see what's underneath, then I build tools out of the pieces.
 
-<br />
+trainers, memory editors, aimbots, triggerbots, injectors — if a process is running, there's a way in. i find it, then I write something clean enough to ship.
 
-[![](https://img.shields.io/badge/-Dusk%20Cheats-0d0d0d?style=for-the-badge&logo=ghost&logoColor=c8a8f0)](https://github.com/placeholder)
-[![](https://img.shields.io/badge/-CS2-0d0d0d?style=for-the-badge&logo=steam&logoColor=888888)](https://github.com/placeholder)
-[![](https://img.shields.io/badge/-C%2B%2B-0d0d0d?style=for-the-badge&logo=cplusplus&logoColor=c8a8f0)](https://github.com/placeholder)
+### how i work
 
-</div>
+most of what I do starts the same way: figure out what the game actually is before touching it.
 
----
-
-<br />
-
-**i'm Larpbase.**
-
-owner and sole creator of **[Dusk Cheats](https://github.com/placeholder)** — a private CS2 cheat written from scratch.
-no leaked bases. no team. just memory, math and a lot of time in a hex editor.
-
-i work close to the metal: process memory, hooking, rendering, anticheat behavior.
-if a game has a runtime, i'm probably already inside it.
-
-<br />
-
-```cpp
-// what i spend time on
-const auto interests = {
-    "memory reading & pointer chains",
-    "DLL injection & manual mapping",
-    "D3D11 overlay rendering",
-    "aimbot math & humanization",
-    "anticheat evasion (behavioral)",
-    "reverse engineering game internals",
-};
+```
+identify runtime  →  map memory  →  hook  →  build feature  →  ship
 ```
 
-<br />
+**unity** games get BepInEx or MelonLoader, Harmony for the patches, dnSpy when I need to read the IL directly. **unreal** means dumping the SDK and walking GObjects by hand. **source** games are netvars and signature scanning. **minecraft** is Fabric or Forge mixins, sometimes raw ASM when the loader gets in the way.
 
----
+underneath all of that it's the same handful of moves — AOB scanning, pointer chains, VMT swaps, manual mapping when LoadLibrary won't do. the game changes, the technique mostly doesn't.
 
-<br />
+on macOS (what I actually run) none of the Windows playbook applies — it's LLDB and `mach_vm_read`/`mach_vm_write`, Frida when I need something more dynamic. Windows-only titles get a VM or CrossOver and I say so before I promise something that won't run.
 
-<div align="center">
+### tools i reach for
 
-**↓ main project ↓**
+Cheat Engine, x64dbg, Ghidra, Frida, ReClass.NET, HxD, Wireshark when the cheat has to talk to a server too.
 
-</div>
+### elsewhere
 
-<br />
-
-> **Dusk Cheats** — private CS2 internal cheat.
-> ESP, aimbot, triggerbot, bhop. built for feel, not just function.
-> invite-only. always undetected or i don't ship it.
-
-<br />
-
----
-
-<br />
-
-<div align="center">
-
-![](https://github-readme-stats.vercel.app/api?username=larpbase&show_icons=true&theme=transparent&title_color=c8a8f0&text_color=888888&icon_color=c8a8f0&border_color=222222&hide_border=false)
-
-</div>
-
-<br />
-
-<div align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:13111a,100:0a0a0f&height=100&section=footer" />
-</div>
+[fakecrime.bio/CrPablo](https://fakecrime.bio/CrPablo)
