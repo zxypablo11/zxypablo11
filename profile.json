@@ -24,7 +24,7 @@
   "hero": {
     "greeting": "hey, i'm",
     "name": "Pablo",
-    "subtitle": "I build Dusk, a free iPhone music player — dark UI, no accounts, no ads. Smaller tools on the side.",
+    "subtitle": "I build Dusk, a free iPhone music player dark UI, no accounts, no ads. Smaller tools on the side.",
     "typing": false,
     "avatarShape": "circle",
     "chips": [
