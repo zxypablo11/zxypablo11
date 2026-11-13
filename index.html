@@ -12,16 +12,20 @@
 
   <style>
     :root {
-      --bg: #0e0e10;
-      --surface: #1a1a1e;
-      --surface-hover: #222228;
-      --surface-highest: #2a2a32;
-      --text: #f0ebe3;
-      --text-sub: #9a958c;
-      --btn-bg: #f0ebe3;
-      --btn-text: #0e0e10;
-      --btn-hover: #ddd6cb;
-      --font-google: 'Product Sans', 'Google Sans', 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      /* Quiet ink-navy — no neon, no glow */
+      --bg: #0d1420;
+      --bg-deep: #0a1018;
+      --surface: #152033;
+      --surface-hover: #1b2940;
+      --surface-highest: #24344d;
+      --text: #e8eef6;
+      --text-sub: #8b97a8;
+      --line: #243147;
+      --accent: #7d8fa8;
+      --btn-bg: #d7e0ec;
+      --btn-text: #0d1420;
+      --btn-hover: #c2cedd;
+      --font-google: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
     }
 
     *, *::before, *::after {
@@ -50,6 +54,9 @@
     }
 
     body {
+      background:
+        radial-gradient(1200px 700px at 50% -10%, #162338 0%, transparent 55%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
       background-color: var(--bg);
       color: var(--text);
       font-family: var(--font-google);
@@ -102,10 +109,9 @@
     .global-ripple {
       position: fixed;
       border-radius: 50%;
-      background: rgba(141, 94, 242, 0.22);
+      background: rgba(125, 143, 168, 0.18);
       pointer-events: none;
       transform: scale(0);
-      filter: blur(5px);
       animation: globalRippleAnim 0.65s cubic-bezier(0.1, 0.4, 0.2, 1) forwards;
       z-index: 9998;
     }
@@ -125,9 +131,10 @@
       align-items: center;
       justify-content: space-between;
       padding: 20px 42px;
-      background: rgba(248, 246, 251, 0.75);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(13, 20, 32, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line) !important;
     }
 
     .nav-brand {
@@ -262,8 +269,7 @@
     }
 
     .char.is-white {
-      color: #0e0e10 !important;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35) !important;
+      color: #9eb0c7 !important;
     }
 
     .char.is-dark {
@@ -273,17 +279,11 @@
     @keyframes charHeroAppear {
       0% {
         opacity: 0;
-        transform: scale(3.2) translateY(-40px);
-        filter: blur(24px);
-      }
-      60% {
-        opacity: 0.85;
-        filter: blur(3px);
+        transform: translateY(18px);
       }
       100% {
         opacity: 1;
-        transform: scale(1) translateY(0);
-        filter: blur(0px);
+        transform: translateY(0);
       }
     }
 
@@ -556,8 +556,8 @@
       bottom: 28px;
       left: 50%;
       transform: translateX(-50%) translateY(90px);
-      background: var(--text);
-      color: #0e0e10;
+      background: var(--surface-highest);
+      color: var(--text);
       padding: 12px 24px;
       border-radius: 9999px;
       font-size: 0.92rem;
@@ -649,7 +649,7 @@
     </div>
 
     <div class="hero-description">
-      <span class="material-symbols-outlined" style="font-size: 18px; color: #C8BEB0;">music_note</span>
+      <span class="material-symbols-outlined" style="font-size: 18px; color: var(--accent);">music_note</span>
       <span>NRW, Germany &bull; building Dusk for iPhone</span>
     </div>
 
@@ -815,7 +815,7 @@
   </main>
 
   <div id="toast">
-    <span class="material-symbols-outlined" style="font-size: 20px; color: #a5d6a7;">check_circle</span>
+    <span class="material-symbols-outlined" style="font-size: 20px; color: var(--accent);">check_circle</span>
     <span>Link copied</span>
   </div>
 
@@ -1083,7 +1083,7 @@
       }
       shapeCtx.closePath();
 
-      shapeCtx.fillStyle = "#1a1a1e";
+      shapeCtx.fillStyle = "#152033";
       shapeCtx.fill();
 
       shapeCtx.clip();
@@ -1159,7 +1159,7 @@
         else cursorCtx.lineTo(x, y);
       }
       cursorCtx.closePath();
-      cursorCtx.fillStyle = `hsl(${cursorHue}, 85%, 96%)`;
+      cursorCtx.fillStyle = `hsl(215, 18%, 88%)`;
       cursorCtx.fill();
 
       cursorCtx.beginPath();
@@ -1174,7 +1174,7 @@
       }
       cursorCtx.closePath();
       cursorCtx.lineWidth = 2.6;
-      cursorCtx.strokeStyle = `hsl(${cursorHue}, 85%, 88%)`;
+      cursorCtx.strokeStyle = `hsl(215, 16%, 72%)`;
       cursorCtx.stroke();
     }
 
@@ -1221,7 +1221,7 @@
           cursorShapeTo = Math.floor(Math.random() * shapeProfiles.length);
         }
         cursorRot += 0.004;
-        cursorHue = (cursorHue + 0.45) % 360;
+        cursorHue = 215;
 
         drawCustomCursorShape(easeInOutCubic(cursorMorphProgress));
         updateFloatingLetters(now);
@@ -1237,7 +1237,7 @@
     const ctx = canvas.getContext("2d");
     let width, height;
     let particles = [];
-    const TOTAL_PARTICLES = 260;
+    const TOTAL_PARTICLES = 90;
     let currentX, currentY;
     let trailVelX = 0;
     let trailVelY = 0;
@@ -1261,14 +1261,12 @@
 
     window.addEventListener("resize", resize);
 
-    function getParticleColor(angleRad, alpha) {
+        function getParticleColor(angleRad, alpha) {
       const deg = ((angleRad * 180 / Math.PI) % 360 + 360) % 360;
-      if (deg < 60) return `rgba(138, 180, 248, ${alpha})`;
-      if (deg < 130) return `rgba(197, 138, 249, ${alpha})`;
-      if (deg < 200) return `rgba(242, 139, 130, ${alpha})`;
-      if (deg < 270) return `rgba(253, 214, 99, ${alpha})`;
-      if (deg < 330) return `rgba(129, 201, 149, ${alpha})`;
-      return `rgba(120, 217, 236, ${alpha})`;
+      if (deg < 90) return `rgba(110, 132, 160, ${alpha * 0.35})`;
+      if (deg < 180) return `rgba(140, 160, 186, ${alpha * 0.28})`;
+      if (deg < 270) return `rgba(90, 112, 140, ${alpha * 0.32})`;
+      return `rgba(160, 176, 198, ${alpha * 0.22})`;
     }
 
     class Particle {
