@@ -13,18 +13,18 @@
   <style>
     :root {
       /* Ink-navy, brighter — no neon glow */
-      --bg: #101a2a;
-      --bg-deep: #0c1522;
-      --surface: #1a2740;
-      --surface-hover: #223352;
-      --surface-highest: #2c4060;
-      --text: #f3f6fb;
-      --text-sub: #c0cddc;
-      --line: #2a3d58;
-      --accent: #9eb6d4;
-      --btn-bg: #eef3f9;
-      --btn-text: #101a2a;
-      --btn-hover: #dbe5f2;
+      --bg: #ffffff;
+      --bg-deep: #fafafa;
+      --surface: #f4f4f4;
+      --surface-hover: #ebebeb;
+      --surface-highest: #e0e0e0;
+      --text: #111111;
+      --text-sub: #666666;
+      --line: #e6e6e6;
+      --accent: #111111;
+      --btn-bg: #111111;
+      --btn-text: #ffffff;
+      --btn-hover: #333333;
       --font-google: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
     }
 
@@ -55,7 +55,7 @@
 
     body {
       background:
-        radial-gradient(1200px 700px at 50% -10%, #162338 0%, transparent 55%),
+        radial-gradient(1200px 700px at 50% -10%, #ffffff 0%, transparent 55%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
       background-color: var(--bg);
       color: var(--text);
@@ -97,6 +97,17 @@
       transform: translate(-50%, -50%) scale(0.85);
     }
 
+
+    .aurora{display:none;position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;filter:blur(90px) saturate(120%);opacity:.55}
+    .aurora .blob{position:absolute;border-radius:50%;will-change:transform}
+    .aurora .b1{width:55vmax;height:55vmax;left:-15vmax;top:-20vmax;background:radial-gradient(circle,#2f5b9a 0%,transparent 65%);animation:drift1 38s ease-in-out infinite alternate}
+    .aurora .b2{width:48vmax;height:48vmax;right:-15vmax;top:10vh;background:radial-gradient(circle,#3a7c9e 0%,transparent 65%);animation:drift2 46s ease-in-out infinite alternate}
+    .aurora .b3{width:50vmax;height:50vmax;left:15vw;bottom:-25vmax;background:radial-gradient(circle,#4b4f9c 0%,transparent 65%);animation:drift3 52s ease-in-out infinite alternate}
+    .aurora .b4{width:30vmax;height:30vmax;left:40vw;top:30vh;background:radial-gradient(circle,#6b8fbf 0%,transparent 65%);opacity:.6;animation:drift1 60s ease-in-out infinite alternate-reverse}
+    @keyframes drift1{to{transform:translate(18vw,14vh) scale(1.15)}}
+    @keyframes drift2{to{transform:translate(-20vw,18vh) scale(.9)}}
+    @keyframes drift3{to{transform:translate(12vw,-16vh) scale(1.1)}}
+    @media (prefers-reduced-motion:reduce){.aurora .blob{animation:none}}
     #spatial-canvas {
       position: fixed;
       inset: 0;
@@ -109,7 +120,7 @@
     .global-ripple {
       position: fixed;
       border-radius: 50%;
-      background: rgba(125, 143, 168, 0.18);
+      background: rgba(0, 0, 0, 0.06);
       pointer-events: none;
       transform: scale(0);
       animation: globalRippleAnim 0.65s cubic-bezier(0.1, 0.4, 0.2, 1) forwards;
@@ -131,7 +142,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 20px 42px;
-      background: rgba(13, 20, 32, 0.82);
+      background: rgba(255, 255, 255, 0.82);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       
@@ -270,7 +281,7 @@
     }
 
     .char.is-white {
-      color: #c9d7ea !important;
+      color: #9a9a9a !important;
     }
 
     .char.is-dark {
@@ -319,7 +330,7 @@
       gap: 10px;
       padding: 10px 22px;
       border-radius: 9999px;
-      background: rgba(34, 51, 82, 0.92);
+      background: rgba(244, 244, 244, 0.92);
     }
 
     .hero-cta {
@@ -612,7 +623,7 @@
     <canvas id="cursor-canvas"></canvas>
   </div>
 
-  <canvas id="spatial-canvas"></canvas>
+  <div class="aurora" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span></div>
 
   <header>
     <a href="https://github.com/zxypablo11" target="_blank" rel="noopener noreferrer" class="nav-brand">
@@ -1084,20 +1095,25 @@
         shapeCtx.quadraticCurveTo(p[0], p[1], (p[0] + n[0]) / 2, (p[1] + n[1]) / 2);
       }
       shapeCtx.closePath();
-      shapeCtx.fillStyle = "#1a2740";
+      shapeCtx.fillStyle = "#f0f0f0";
       shapeCtx.fill();
       shapeCtx.restore();
 
-      // Bust drawn larger + higher so the head breaks out of the circle (no clip)
+      // Picture clipped to the morphing shape so it never sticks out
       if (pfpLoaded) {
-        const pfpDrawSize = 410;
-        const pfpX = cx - pfpDrawSize / 2;
-        const pfpY = cy - pfpDrawSize * 0.62;
+        const rMax = Math.max(...pts.map(p => Math.hypot(p[0] - cx, p[1] - cy)));
+        const pfpDrawSize = rMax * 2;
         shapeCtx.save();
-        shapeCtx.shadowColor = "rgba(0, 0, 0, 0.45)";
-        shapeCtx.shadowBlur = 28;
-        shapeCtx.shadowOffsetY = 10;
-        shapeCtx.drawImage(pfpImage, pfpX, pfpY, pfpDrawSize, pfpDrawSize);
+        shapeCtx.beginPath();
+        shapeCtx.moveTo((p0[0] + pLast[0]) / 2, (p0[1] + pLast[1]) / 2);
+        for (let k = 0; k < SHAPE_K; k++) {
+          const p = pts[k];
+          const n = pts[(k + 1) % SHAPE_K];
+          shapeCtx.quadraticCurveTo(p[0], p[1], (p[0] + n[0]) / 2, (p[1] + n[1]) / 2);
+        }
+        shapeCtx.closePath();
+        shapeCtx.clip();
+        shapeCtx.drawImage(pfpImage, cx - rMax, cy - rMax, pfpDrawSize, pfpDrawSize);
         shapeCtx.restore();
       }
 
@@ -1111,7 +1127,7 @@
         shapeCtx.quadraticCurveTo(p[0], p[1], (p[0] + n[0]) / 2, (p[1] + n[1]) / 2);
       }
       shapeCtx.closePath();
-      shapeCtx.strokeStyle = "rgba(158, 182, 212, 0.35)";
+      shapeCtx.strokeStyle = "rgba(0, 0, 0, 0.15)";
       shapeCtx.lineWidth = 2;
       shapeCtx.stroke();
       shapeCtx.restore();
@@ -1248,110 +1264,8 @@
     drawCanvasShape(shapeProfiles[0], shapeProfiles[1], 0, 1, 1);
     requestAnimationFrame(shapeFrame);
 
-    const canvas = document.getElementById("spatial-canvas");
-    const ctx = canvas.getContext("2d");
-    let width, height;
-    let particles = [];
-    const TOTAL_PARTICLES = 90;
-    let currentX, currentY;
-    let trailVelX = 0;
-    let trailVelY = 0;
-
-    function resize() {
-      const dpr = Math.round(window.devicePixelRatio || 1);
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      ctx.scale(dpr, dpr);
-
-      if (!currentX) {
-        currentX = width / 2;
-        currentY = height / 2;
-      }
-      updateCachedLayout();
-    }
-
-    window.addEventListener("resize", resize);
-
-        function getParticleColor(angleRad, alpha) {
-      const deg = ((angleRad * 180 / Math.PI) % 360 + 360) % 360;
-      if (deg < 90) return `rgba(140, 170, 210, ${alpha * 0.45})`;
-      if (deg < 180) return `rgba(160, 190, 230, ${alpha * 0.38})`;
-      if (deg < 270) return `rgba(120, 150, 190, ${alpha * 0.4})`;
-      return `rgba(180, 205, 235, ${alpha * 0.32})`;
-    }
-
-    class Particle {
-      constructor() {
-        this.reset();
-      }
-
-      reset() {
-        this.angle = Math.random() * Math.PI * 2;
-        this.minRadius = 220 + Math.random() * 45;
-        this.maxRadius = Math.max(width, height) * 0.78;
-        this.radius = this.minRadius + Math.random() * (this.maxRadius - this.minRadius);
-        this.speed = 0.22 + Math.random() * 0.42;
-        this.dotRadius = 3.6 + Math.random() * 2.8;
-        this.angularSpeed = (Math.random() - 0.5) * 0.0014;
-        this.twinklePhase = Math.random() * Math.PI * 2;
-      }
-
-      update(motionSpeed) {
-        this.radius += this.speed + motionSpeed * 0.035;
-        this.angle += this.angularSpeed;
-        this.twinklePhase += 0.035;
-
-        if (this.radius > this.maxRadius) {
-          this.radius = this.minRadius;
-          this.angle = Math.random() * Math.PI * 2;
-        }
-      }
-
-      draw(cx, cy) {
-        const twinkle = 0.75 + Math.sin(this.twinklePhase) * 0.22;
-        const x = cx + Math.cos(this.angle) * this.radius;
-        const y = cy + Math.sin(this.angle) * this.radius;
-
-        ctx.beginPath();
-        ctx.arc(x, y, this.dotRadius, 0, Math.PI * 2);
-        ctx.fillStyle = getParticleColor(this.angle, twinkle);
-        ctx.fill();
-      }
-    }
-
-    function initParticles() {
-      particles = [];
-      for (let i = 0; i < TOTAL_PARTICLES; i++) {
-        particles.push(new Particle());
-      }
-    }
-
-    function animateSpatial() {
-      ctx.clearRect(0, 0, width, height);
-
-      const dx = pointerX - currentX;
-      const dy = pointerY - currentY;
-      trailVelX = dx * 0.055;
-      trailVelY = dy * 0.055;
-      currentX += trailVelX;
-      currentY += trailVelY;
-
-      const motionSpeed = Math.hypot(trailVelX, trailVelY);
-
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update(motionSpeed);
-        particles[i].draw(currentX, currentY);
-      }
-      requestAnimationFrame(animateSpatial);
-    }
-
-    resize();
-    initParticles();
-    animateSpatial();
+    updateCachedLayout();
+    window.addEventListener("resize", updateCachedLayout);
   </script>
 </body>
 </html>

@@ -2,3 +2,8 @@ rootscripts-main/
 preview-header.html
 Monochrome*.png
 header.xml
+node_modules/
+package-lock.json
+package.json
+_*.js
+_*.png
