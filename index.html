@@ -12,19 +12,19 @@
 
   <style>
     :root {
-      /* Quiet ink-navy — no neon, no glow */
-      --bg: #0d1420;
-      --bg-deep: #0a1018;
-      --surface: #152033;
-      --surface-hover: #1b2940;
-      --surface-highest: #24344d;
-      --text: #e8eef6;
-      --text-sub: #8b97a8;
-      --line: #243147;
-      --accent: #7d8fa8;
-      --btn-bg: #d7e0ec;
-      --btn-text: #0d1420;
-      --btn-hover: #c2cedd;
+      /* Ink-navy, brighter — no neon glow */
+      --bg: #101a2a;
+      --bg-deep: #0c1522;
+      --surface: #1a2740;
+      --surface-hover: #223352;
+      --surface-highest: #2c4060;
+      --text: #f3f6fb;
+      --text-sub: #c0cddc;
+      --line: #2a3d58;
+      --accent: #9eb6d4;
+      --btn-bg: #eef3f9;
+      --btn-text: #101a2a;
+      --btn-hover: #dbe5f2;
       --font-google: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
     }
 
@@ -226,35 +226,36 @@
     .hero-centerpiece {
       position: relative;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       width: 100%;
       max-width: 950px;
-      min-height: 460px;
+      min-height: 520px;
+      gap: 6px;
     }
 
     #shape-canvas {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      position: relative;
       width: 440px;
-      height: 440px;
+      height: 460px;
       pointer-events: none;
       z-index: 1;
+      flex: 0 0 auto;
     }
 
     .hero-title-wrap {
       position: relative;
-      z-index: 2;
+      z-index: 3;
       display: flex;
       align-items: center;
       justify-content: center;
       pointer-events: none;
+      margin-bottom: -8px;
     }
 
     .hero-title {
-      font-size: clamp(5.6rem, 15vw, 11rem);
+      font-size: clamp(4.8rem, 13vw, 9.5rem);
       font-weight: 700;
       letter-spacing: -0.04em;
       line-height: 1;
@@ -269,7 +270,7 @@
     }
 
     .char.is-white {
-      color: #9eb0c7 !important;
+      color: #c9d7ea !important;
     }
 
     .char.is-dark {
@@ -309,17 +310,16 @@
     .hero-description {
       position: relative;
       z-index: 5;
-      margin-top: 18px;
+      margin-top: 10px;
       font-size: 1.05rem;
       font-weight: 600;
-      color: var(--text-sub);
+      color: var(--text);
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 8px 20px;
+      padding: 10px 22px;
       border-radius: 9999px;
-      background: rgba(237, 232, 245, 0.55);
-      backdrop-filter: blur(8px);
+      background: rgba(34, 51, 82, 0.92);
     }
 
     .hero-cta {
@@ -634,8 +634,6 @@
 
   <section class="hero">
     <div class="hero-centerpiece">
-      <canvas id="shape-canvas"></canvas>
-
       <div class="hero-title-wrap">
         <h1 class="hero-title" id="typewriter-container" aria-label="Pablo">
           <span class="char is-dark" data-idx="0" style="--delay: 0s">P</span>
@@ -646,6 +644,7 @@
         </h1>
         <span class="typewriter-cursor"></span>
       </div>
+      <canvas id="shape-canvas" width="440" height="460" aria-hidden="true"></canvas>
     </div>
 
     <div class="hero-description">
@@ -952,17 +951,18 @@
     const shapeCanvas = document.getElementById("shape-canvas");
     const shapeCtx = shapeCanvas.getContext("2d");
     const shapeDpr = Math.round(window.devicePixelRatio || 1);
-    const shapeDim = 460;
-    shapeCanvas.width = shapeDim * shapeDpr;
-    shapeCanvas.height = shapeDim * shapeDpr;
-    shapeCanvas.style.width = `${shapeDim}px`;
-    shapeCanvas.style.height = `${shapeDim}px`;
-    shapeCtx.scale(shapeDpr, shapeDpr);
+    const shapeDimW = 440;
+    const shapeDimH = 480;
+    shapeCanvas.width = shapeDimW * shapeDpr;
+    shapeCanvas.height = shapeDimH * shapeDpr;
+    shapeCanvas.style.width = `${shapeDimW}px`;
+    shapeCanvas.style.height = `${shapeDimH}px`;
+    shapeCtx.setTransform(shapeDpr, 0, 0, shapeDpr, 0, 0);
 
     const pfpImage = new Image();
     let pfpLoaded = false;
     pfpImage.onload = () => { pfpLoaded = true; };
-    pfpImage.src = "avatar.png";
+    pfpImage.src = "avatar-pop.png";
 
     let currentRot = 0;
     let targetRotVel = 0;
@@ -1057,20 +1057,22 @@
     setTimeout(updateCachedLayout, 200);
 
     function drawCanvasShape(rA, rB, t, sA, sB) {
-      shapeCtx.clearRect(0, 0, shapeDim, shapeDim);
+      shapeCtx.clearRect(0, 0, shapeDimW, shapeDimH);
 
-      const cx = shapeDim / 2;
-      const cy = shapeDim / 2;
+      // Disk sits lower so the bust can pop out the top
+      const cx = shapeDimW / 2;
+      const cy = shapeDimH * 0.58;
       currentMorphT = t;
       currentSizeVal = sA + (sB - sA) * t;
 
       const pts = [];
       for (let k = 0; k < SHAPE_K; k++) {
         const theta = -Math.PI + (Math.PI * 2 * k) / SHAPE_K + currentRot;
-        const r = (rA[k] + (rB[k] - rA[k]) * t) * currentSizeVal;
+        const r = (rA[k] + (rB[k] - rA[k]) * t) * currentSizeVal * 0.92;
         pts.push([cx + Math.cos(theta) * r, cy + Math.sin(theta) * r]);
       }
 
+      // Soft disk fill (frame behind the bust)
       shapeCtx.save();
       shapeCtx.beginPath();
       const p0 = pts[0];
@@ -1082,23 +1084,36 @@
         shapeCtx.quadraticCurveTo(p[0], p[1], (p[0] + n[0]) / 2, (p[1] + n[1]) / 2);
       }
       shapeCtx.closePath();
-
-      shapeCtx.fillStyle = "#152033";
+      shapeCtx.fillStyle = "#1a2740";
       shapeCtx.fill();
+      shapeCtx.restore();
 
-      shapeCtx.clip();
-
+      // Bust drawn larger + higher so the head breaks out of the circle (no clip)
       if (pfpLoaded) {
-        const pfpDrawSize = 370;
-        shapeCtx.drawImage(
-          pfpImage,
-          cx - pfpDrawSize / 2,
-          cy - pfpDrawSize / 2,
-          pfpDrawSize,
-          pfpDrawSize
-        );
+        const pfpDrawSize = 410;
+        const pfpX = cx - pfpDrawSize / 2;
+        const pfpY = cy - pfpDrawSize * 0.62;
+        shapeCtx.save();
+        shapeCtx.shadowColor = "rgba(0, 0, 0, 0.45)";
+        shapeCtx.shadowBlur = 28;
+        shapeCtx.shadowOffsetY = 10;
+        shapeCtx.drawImage(pfpImage, pfpX, pfpY, pfpDrawSize, pfpDrawSize);
+        shapeCtx.restore();
       }
 
+      // Thin rim on top of lower half so the disk still reads as a circle
+      shapeCtx.save();
+      shapeCtx.beginPath();
+      shapeCtx.moveTo((p0[0] + pLast[0]) / 2, (p0[1] + pLast[1]) / 2);
+      for (let k = 0; k < SHAPE_K; k++) {
+        const p = pts[k];
+        const n = pts[(k + 1) % SHAPE_K];
+        shapeCtx.quadraticCurveTo(p[0], p[1], (p[0] + n[0]) / 2, (p[1] + n[1]) / 2);
+      }
+      shapeCtx.closePath();
+      shapeCtx.strokeStyle = "rgba(158, 182, 212, 0.35)";
+      shapeCtx.lineWidth = 2;
+      shapeCtx.stroke();
       shapeCtx.restore();
     }
 
@@ -1263,10 +1278,10 @@
 
         function getParticleColor(angleRad, alpha) {
       const deg = ((angleRad * 180 / Math.PI) % 360 + 360) % 360;
-      if (deg < 90) return `rgba(110, 132, 160, ${alpha * 0.35})`;
-      if (deg < 180) return `rgba(140, 160, 186, ${alpha * 0.28})`;
-      if (deg < 270) return `rgba(90, 112, 140, ${alpha * 0.32})`;
-      return `rgba(160, 176, 198, ${alpha * 0.22})`;
+      if (deg < 90) return `rgba(140, 170, 210, ${alpha * 0.45})`;
+      if (deg < 180) return `rgba(160, 190, 230, ${alpha * 0.38})`;
+      if (deg < 270) return `rgba(120, 150, 190, ${alpha * 0.4})`;
+      return `rgba(180, 205, 235, ${alpha * 0.32})`;
     }
 
     class Particle {
