@@ -1,7 +1,7 @@
 {
- "key": "2ed29119",
+ "key": "9cdd9b64",
  "stars": 0,
- "contributions": 33,
+ "contributions": 40,
  "repos": 2,
  "followers": 1,
  "languages": [
@@ -15,7 +15,7 @@
   ],
   [
    "HTML",
-   416966
+   417896
   ],
   [
    "Java",
@@ -136,7 +136,7 @@
     "today": false
    },
    {
-    "c": 2,
+    "c": 9,
     "day": 13,
     "today": true
    },
@@ -152,7 +152,7 @@
   {
    "name": "dusk-ios",
    "url": "https://github.com/zxypablo11/dusk-ios",
-   "text": "Dusk for iPhone, best free music player",
+   "text": "Dusk for iPhone — clean music player based on Muriel (MIT)",
    "fork": false,
    "stars": 0,
    "language": "JavaScript",
