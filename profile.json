@@ -1,0 +1,173 @@
+{
+  "version": 1,
+  "login": "zxypablo11",
+  "seed": "#C8BEB0",
+  "seedFromAvatar": false,
+  "scheme": "monochrome",
+  "motion": true,
+  "iconFill": true,
+  "order": [
+    "hero",
+    "socials",
+    "about",
+    "projects",
+    "stack",
+    "wave",
+    "stats",
+    "streak",
+    "buttons"
+  ],
+  "hidden": [
+    "streak",
+    "buttons"
+  ],
+  "hero": {
+    "greeting": "hey, i'm",
+    "name": "Pablo",
+    "subtitle": "I build Dusk, a free iPhone music player — dark UI, no accounts, no ads. Smaller tools on the side.",
+    "typing": false,
+    "avatarShape": "circle",
+    "chips": [
+      {
+        "icon": "location_on",
+        "label": "NRW, Germany"
+      },
+      {
+        "icon": "code",
+        "label": "JS, Node, Capacitor, iOS"
+      }
+    ]
+  },
+  "about": {
+    "title": "About",
+    "items": [
+      {
+        "icon": "music_note",
+        "label": "Building Dusk for iPhone"
+      },
+      {
+        "icon": "palette",
+        "label": "Quiet dark UI, cover-first"
+      },
+      {
+        "icon": "code",
+        "label": "Frontend + Capacitor"
+      },
+      {
+        "icon": "favorite",
+        "label": "Open source when it helps"
+      },
+      {
+        "icon": "person",
+        "label": "Designer who ships"
+      }
+    ]
+  },
+  "stack": {
+    "title": "Stack",
+    "groups": [
+      {
+        "title": "Build",
+        "items": [
+          {
+            "icon": "brand:javascript",
+            "label": "JS"
+          },
+          {
+            "icon": "brand:html5",
+            "label": "HTML/CSS"
+          },
+          {
+            "icon": "brand:apple",
+            "label": "iOS"
+          },
+          {
+            "icon": "brand:nodedotjs",
+            "label": "Node"
+          }
+        ]
+      },
+      {
+        "title": "Tools",
+        "items": [
+          {
+            "icon": "brand:figma",
+            "label": "Figma"
+          },
+          {
+            "icon": "brand:git",
+            "label": "Git"
+          },
+          {
+            "icon": "brand:githubactions",
+            "label": "Actions"
+          },
+          {
+            "icon": "brand:github",
+            "label": "GitHub"
+          }
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "source": "manual",
+    "repos": [
+      "zxypablo11/dusk-ios"
+    ],
+    "overrides": {
+      "dusk-ios": {
+        "text": "Free iPhone music player for YouTube, YouTube Music, and SoundCloud. Dark UI, sideload IPA builds."
+      }
+    },
+    "empty": "No description yet.",
+    "fork": "Fork"
+  },
+  "stats": {
+    "title": "GitHub",
+    "stars": "Stars",
+    "contributions": "Contributions this year",
+    "repos": "Public repos",
+    "followers": "Followers",
+    "calendar": "Last 21 days",
+    "weekdays": "SMTWTFS",
+    "languages": "Languages across my repositories",
+    "showLanguages": true
+  },
+  "streak": {
+    "title": "Streak",
+    "current": "Current streak",
+    "longest": "Longest this year",
+    "days": "days"
+  },
+  "socials": {
+    "items": [
+      {
+        "icon": "brand:discord",
+        "url": "https://discord.gg/duskk"
+      },
+      {
+        "icon": "brand:github",
+        "url": "https://github.com/zxypablo11"
+      },
+      {
+        "icon": "web_traffic",
+        "url": "https://fakecrime.bio/Pabloo"
+      }
+    ],
+    "variant": "chip",
+    "fill": "neutral",
+    "card": true,
+    "shape": "soft"
+  },
+  "buttons": {
+    "items": [
+      {
+        "icon": "language",
+        "label": "My site",
+        "url": "https://fakecrime.bio/Pabloo",
+        "style": "filled"
+      }
+    ]
+  }
+}
