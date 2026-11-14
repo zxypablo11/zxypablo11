@@ -1,37 +1,37 @@
 {
- "key": "37fd8b9b",
- "stars": 1,
- "contributions": 50,
- "repos": 3,
+ "key": "b03be129",
+ "stars": 2,
+ "contributions": 122,
+ "repos": 5,
  "followers": 2,
  "languages": [
   [
    "JavaScript",
-   2268332
-  ],
-  [
-   "HTML",
-   466309
+   4669320
   ],
   [
    "CSS",
-   452668
+   917332
   ],
   [
-   "Java",
-   41624
+   "HTML",
+   837418
   ],
   [
    "Swift",
-   38029
+   127944
+  ],
+  [
+   "Java",
+   83248
   ],
   [
    "Python",
-   19760
+   52768
   ],
   [
-   "Nix",
-   2829
+   "Rust",
+   21796
   ]
  ],
  "days": [
@@ -121,12 +121,12 @@
     "today": false
    },
    {
-    "c": 3,
+    "c": 5,
     "day": 10,
     "today": false
    },
    {
-    "c": 11,
+    "c": 33,
     "day": 11,
     "today": false
    },
@@ -136,12 +136,12 @@
     "today": false
    },
    {
-    "c": 12,
+    "c": 42,
     "day": 13,
     "today": false
    },
    {
-    "c": 7,
+    "c": 25,
     "day": 14,
     "today": true
    }
@@ -156,9 +156,27 @@
   {
    "name": "Dusk-Music",
    "url": "https://github.com/zxypablo11/Dusk-Music",
+   "text": "Dusk Music — a free music player for everyone.",
+   "fork": false,
+   "stars": 1,
+   "language": "JavaScript",
+   "topics": []
+  },
+  {
+   "name": "Dusk-Music-archive",
+   "url": "https://github.com/zxypablo11/Dusk-Music-archive",
    "text": "Dusk for iPhone — clean music player based on Muriel (MIT)",
    "fork": false,
    "stars": 1,
+   "language": "JavaScript",
+   "topics": []
+  },
+  {
+   "name": "register",
+   "url": "https://github.com/zxypablo11/register",
+   "text": "Grab your own sweet-looking '.is-a.dev' subdomain.",
+   "fork": true,
+   "stars": 0,
    "language": "JavaScript",
    "topics": []
   },
