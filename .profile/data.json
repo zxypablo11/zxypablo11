@@ -1,5 +1,5 @@
 {
- "key": "8222a4c3",
+ "key": "bca32042",
  "stars": 2,
  "contributions": 142,
  "repos": 6,
@@ -128,15 +128,19 @@
    {
     "c": 0,
     "day": 25,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 26,
     "today": true
    },
-   null,
    null,
    null
   ]
  ],
  "streak": {
-  "current": 2,
+  "current": 0,
   "longest": 2
  },
  "pins": [],
