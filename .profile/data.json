@@ -1,5 +1,5 @@
 {
- "key": "bca32042",
+ "key": "42657dc3",
  "stars": 2,
  "contributions": 142,
  "repos": 6,
@@ -133,9 +133,13 @@
    {
     "c": 0,
     "day": 26,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 27,
     "today": true
    },
-   null,
    null
   ]
  ],
